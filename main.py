@@ -16,18 +16,28 @@ def set_key():
         console.print('[bold red] ОШИБКА')
 
 
+def get_key():
+    """Функция получения значения по ключу."""
+    console.print('[bold blue] Введите ключ')
+    key = input()
+    data = redis_client.get(name=key)
+    if any(data):
+        console.print('[bold green] Успешно!')
+        console.print(f'[bold yellow] Данные -[/bold yellow] [bold purple]{data}')
+
+
 def control() -> None:
     """Управление командами."""
     while True:
         console.print('[bold blue] Выберете действие')
         console.print('[bold blue] 1 - Установить ключ/значение')
-        console.print('[bold blue] 2 - Удалить ключ значение')
+        console.print('[bold blue] 2 - Получить данные')
         try:
             result = int(input())
             if result == 1:
                 set_key()
             elif result == 2:
-                pass
+                get_key()
         except ValueError:
             pass
 

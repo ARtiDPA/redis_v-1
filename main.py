@@ -26,20 +26,34 @@ def get_key():
         console.print(f'[bold yellow] Данные -[/bold yellow] [bold purple]{data}')
 
 
+def delete_key():
+    """Функция для удаления ключа."""
+    console.print('[bold blue] Введите ключ')
+    key = input()
+    result = redis_client.delete(key)
+    if result:
+        console.print('[bold green] Успешно!')
+    else:
+        console.print('[bold red] ОШИБКА')
+
+
 def control() -> None:
     """Управление командами."""
     while True:
         console.print('[bold blue] Выберете действие')
         console.print('[bold blue] 1 - Установить ключ/значение')
         console.print('[bold blue] 2 - Получить данные')
+        console.print('[bold blue] 3 - Удалить ключ/значение')
         try:
             result = int(input())
             if result == 1:
                 set_key()
             elif result == 2:
                 get_key()
+            elif result == 3:
+                delete_key()
         except ValueError:
-            pass
+            print('[bold red] ОШИБКА действия')
 
 
 if __name__ == '__main__':

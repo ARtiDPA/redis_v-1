@@ -27,12 +27,18 @@ def set_key() -> None:
 
 def get_key() -> None:
     """Функция получения значения по ключу."""
-    console.print('[bold blue] Введите ключ')
+    console.print('[bold blue] Чтобы получить все ключи нажмите Enter')
+    console.print('[bold blue] Чтобы получить данные введите ключ')
     key = input()
-    data = redis_client.get(name=key)
-    if any(data):
+    if key == '':
+        keys = redis_client.keys('*')
         console.print('[bold green] Успешно!')
-        console.print(f'[bold yellow] Данные - {data}')
+        console.print(keys)
+    else:
+        data = redis_client.get(name=key)
+        if any(data):
+            console.print('[bold green] Успешно!')
+            console.print(f'[bold yellow] Данные - {data}')
 
 
 def delete_key() -> None:

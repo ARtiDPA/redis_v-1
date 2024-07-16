@@ -46,6 +46,17 @@ def delete_key() -> None:
         console.print('[bold red] ОШИБКА')
 
 
+def set_timer() -> None:
+    console.print('[bold blue] Введите ключ')
+    key = input()
+    console.print('[bold blue] Введите время для ключа')
+    time_data = int(input())
+    if redis_client.expire(key, time_data):
+        console.print('[bold green] Успешно!')
+    else:
+        console.print('[bold red] ОШИБКА')
+
+
 def control() -> None:
     """Управление командами."""
     while True:
@@ -53,7 +64,7 @@ def control() -> None:
         console.print('[bold blue] 1 - Установить ключ/значение')
         console.print('[bold blue] 2 - Получить данные')
         console.print('[bold blue] 3 - Удалить ключ/значение')
-        console.print('[bold blue] 4 - #####################')
+        console.print('[bold blue] 4 - Установить таймер для ключа')
         try:
             result = int(input())
             if result == 1:
@@ -63,7 +74,7 @@ def control() -> None:
             elif result == 3:
                 delete_key()
             elif result == 4:
-                pass
+                set_timer()
         except ValueError:
             print('[bold red] ОШИБКА действия')
 

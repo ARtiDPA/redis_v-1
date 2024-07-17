@@ -53,6 +53,7 @@ def delete_key() -> None:
 
 
 def set_timer() -> None:
+    """Функция для создания ключа с жизненым цыклом."""
     console.print('[bold blue] Введите ключ')
     key = input()
     console.print('[bold blue] Введите время для ключа')

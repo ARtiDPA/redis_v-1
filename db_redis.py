@@ -28,7 +28,7 @@ class RedisRequest:
         return self.redis_client.set(name, key)
 
     def get_key(self, name: str) -> str:
-        """Получение значение ключа.
+        """Функция получение значение ключа.
 
         Args:
             name (str): Название ключа
@@ -37,3 +37,14 @@ class RedisRequest:
             str: содержимое ключа
         """
         return self.redis_client.get(name)
+
+    def delete_key(self, name: str) -> bool:
+        """Функция удаления ключа.
+
+        Args:
+            name (str): Название ключа
+
+        Returns:
+            bool: резульат запроса в redis
+        """
+        return self.redis_client.delete(name)

@@ -18,8 +18,8 @@ def control(redis_client) -> None:
         console.print('[bold blue] 1 - Установить ключ/значение')
         console.print('[bold blue] 2 - Получить ключ')
         console.print('[bold blue] 3 - Удаление ключа')
+        console.print('[bold blue] 0 - Выйти')
         result = int(input())
-
         if result == 1:
             console.print('[bold blue] Введите название ключа')
             name = input()

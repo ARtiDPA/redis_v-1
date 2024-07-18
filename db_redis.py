@@ -26,3 +26,14 @@ class RedisRequest:
             bool: резульат запроса в redis.
         """
         return self.redis_client.set(name, key)
+
+    def get_key(self, name: str) -> str:
+        """Получение значение ключа.
+
+        Args:
+            name (str): Название ключа
+
+        Returns:
+            str: содержимое ключа
+        """
+        return self.redis_client.get(name)
